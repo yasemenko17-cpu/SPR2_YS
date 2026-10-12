@@ -1,0 +1,61 @@
+{
+  "story": "Скасувати резервування може лише його власник. Потрібно вибрати, як система перевіряє особу студента: власні паролі, зовнішній сервіс чи зовнішній сервіс із кешем прав.",
+  "qas": [
+    "QAS-SEC-01",
+    "QAS-REL-01"
+  ],
+  "options": {
+    "P: власні паролі": {
+      "latency_ms": 60,
+      "availability_pct": 99.9,
+      "ops": 4,
+      "cost": 20
+    },
+    "Q: OIDC, зовнішній сервіс": {
+      "latency_ms": 250,
+      "availability_pct": 99.5,
+      "ops": 2,
+      "cost": 0
+    },
+    "R: OIDC + кеш прав": {
+      "latency_ms": 120,
+      "availability_pct": 99.9,
+      "ops": 3,
+      "cost": 10
+    }
+  },
+  "criteria": {
+    "latency_ms": [
+      0.2,
+      "min"
+    ],
+    "availability_pct": [
+      0.4,
+      "max"
+    ],
+    "ops": [
+      0.2,
+      "min"
+    ],
+    "cost": [
+      0.2,
+      "min"
+    ]
+  },
+  "limits": {
+    "availability_pct": [
+      "min",
+      99.9
+    ],
+    "latency_ms": [
+      "max",
+      200
+    ]
+  },
+  "units": {
+    "latency_ms": "мс, перевірка особи",
+    "availability_pct": "% доступності перевірки",
+    "ops": "складність експлуатації, 1-5",
+    "cost": "$/міс"
+  }
+}
